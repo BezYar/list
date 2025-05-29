@@ -1,0 +1,12 @@
+.row {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background: #f1f1f1;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+
+.cell {
+  margin-right: 16px;
+}

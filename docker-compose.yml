@@ -1,0 +1,22 @@
+services:
+  server:
+    build: ./server
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./server:/app
+    command: yarn dev
+
+  web:
+    build: ./web
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+    working_dir: /app
+    command: yarn dev --host
+    environment:
+      - SERVER_URL=http://localhost:3001
+    depends_on:
+      - server

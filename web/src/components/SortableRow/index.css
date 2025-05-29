@@ -1,0 +1,7 @@
+.row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 16px;
+  cursor: grab,
+}

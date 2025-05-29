@@ -1,0 +1,15 @@
+services:
+  server:
+    build: ./server
+    command: yarn start
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+
+  web:
+    build:
+      context: ./web
+      target: production
+    ports:
+      - "80:80"
