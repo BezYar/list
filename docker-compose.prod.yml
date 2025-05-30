@@ -6,6 +6,7 @@ services:
     command: yarn dev
     environment:
       - NODE_ENV=production
+    restart: always
     expose:
       - "3001"
     networks:
@@ -17,6 +18,7 @@ services:
       target: production
     environment:
       - NODE_ENV=production
+    restart: always
     expose:
       - "80"
     networks:
@@ -24,6 +26,7 @@ services:
 
   nginx:
     image: nginx:alpine
+    restart: always
     ports:
       - "80:80"
     volumes:

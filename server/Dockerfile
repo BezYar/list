@@ -1,10 +1,11 @@
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /app
 
 COPY package*.json tsconfig.json ./
-
 RUN npm install
-COPY . .
 
-CMD ["npm", "run", "dev"]
+COPY . .
+RUN npm run build
+
+CMD ["npm", "run", "start"]
