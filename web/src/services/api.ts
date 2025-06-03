@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { GetItemsParams, ListData, ListDataItem } from "../components/List/types";
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL ?? 'http://localhost:3001';
 
 export async function fetchSorted(params?: GetItemsParams): Promise<ListData> {
   try {
@@ -13,9 +13,9 @@ export async function fetchSorted(params?: GetItemsParams): Promise<ListData> {
   }
 }
 
-export async function saveSwap(activeId: number, overId: number): Promise<void> {
+export async function saveSwap(activeId: number, overId: number, search?: string): Promise<void> {
   try {
-    await axios.post(`${SERVER_URL}/swap`, { activeId, overId });
+    await axios.post(`${SERVER_URL}/swap`, { activeId, overId, search });
   } catch (error) {
     console.error("Failed to save sorted items", error);
   }

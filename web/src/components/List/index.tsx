@@ -61,7 +61,7 @@ export default function List() {
       const [movedItem] = updated.splice(oldIndex, 1);
       updated.splice(newIndex, 0, movedItem);
       setItems(updated);
-      saveSwap(Number(active.id), Number(over.id)).then(() => loadItems(items.length, search));
+      saveSwap(Number(active.id), Number(over.id), search).then(() => loadItems(items.length, search));
     }
   }, [itemIndicesMap, items, loadItems, search]);
 

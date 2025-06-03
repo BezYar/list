@@ -6,131 +6,144 @@
 ![Vite](https://img.shields.io/badge/Vite-6.3.5-yellow.svg)
 ![DnD Kit](https://img.shields.io/badge/DnD_Kit-6.3.1-green.svg)
 
-Производительный виртуализированный список с возможностью перетаскивания, выбором элементов и поиском, построенный на React, TypeScript и Vite.
+A high-performance virtualized list with drag-and-drop, item selection, and search functionality built with React, TypeScript, and Vite.
 
-## Особенности
+## About
 
-- 🚀 **Виртуализированная прокрутка** с использованием `react-window` для оптимальной производительности
-- 🖱️ **Перетаскивание элементов** с помощью `@dnd-kit`
-- 🔍 **Функция поиска** с мгновенной фильтрацией
-- ✅ **Выбор элементов** с сохранением состояния
-- ♻️ **Бесконечная загрузка** при прокрутке
-- 📱 **Адаптивный дизайн** с компонентами Material UI
-- 🐳 **Поддержка Docker** для удобной разработки и развертывания
+This project was built according to the [technical specification](https://docs.google.com/document/d/1glcxpTMw3yhU4rGYFPoaB0XDca2tHcdbkI3jZo_oxWY/mobilebasic).
 
-## Структура проекта
+## Features
 
-- **web/** - Фронтенд приложение
-  - src/ - React компоненты и логика
-  - public/ - Статические файлы
+- 🚀 **Virtualized scrolling** using `react-window` for optimal performance
+- 🖱️ **Drag and drop** support with `@dnd-kit`
+- 🔍 **Search function** with instant filtering
+- ✅ **Item selection** with state persistence
+- ♻️ **Infinite loading** on scroll
+- 📱 **Responsive design** using Material UI components
+- 🐳 **Docker support** for easy development and deployment
+
+## Project Structure
+
+- **web/** - Frontend application
+  - src/ - React components and logic
+  - public/ - Static files
   - Dockerfile - Production Dockerfile
   - Dockerfile.dev - Development Dockerfile
-  - vite.config.ts - Конфигурация Vite
-- **server/** - Бэкенд API
-  - index.ts - Express сервер
-  - Dockerfile - Dockerfile сервера
-- docker-compose.yml - Конфигурация Docker Compose
+  - vite.config.ts - Vite configuration
+- **server/** - Backend API
+  - index.ts - Express server
+  - Dockerfile - Server Dockerfile
+- docker-compose.yml - Docker Compose configuration
 - docker-compose.dev.yml - Development Docker Compose
 
-## Начало работы
+## Getting Started
 
-### Необходимые компоненты
+### Requirements
 
 - Node.js (v18+)
-- Docker (опционально)
-- Yarn или npm
+- Docker (optional)
+- Yarn or npm
 
-### Разработка
+### Development
 
-1. **Клонируйте репозиторий**
+1. **Clone the repository**
    ```bash
    git clone https://github.com/BezYar/list.git
    cd list
    ```
-2. **Установите зависимости**
+2. **Install dependencies**
 
    ```bash
-   # Для фронтенда
+   # Frontend
    cd web
    yarn install
 
-   # Для бэкенда
+   # Backend
    cd ../server
    yarn install
    ```
-3. **Запустите с Docker (рекомендуется)**
+3. **Create `.env` file**
+
+   Create a `.env` file in the `web` directory with the following content:
+
+   ```env
+   VITE_SERVER_URL=http://localhost:3001
+   ```
+
+4. **Run with Docker (recommended)**
 
    ```bash
    docker-compose -f docker-compose.dev.yml up --build
    ```
-   Или вручную:
+
+   Or manually:
 
    ```bash
-   # В одном терминале (бэкенд)
+   # In one terminal (backend)
    cd server
    yarn dev
 
-   # В другом терминале (фронтенд)
+   # In another terminal (frontend)
    cd web
    yarn dev
    ```
-4. **Откройте приложение**
+5. **Open the app**
 
-   - Фронтенд: http://localhost:5173
-   - Бэкенд: http://localhost:3001
+   - Frontend: http://localhost:5173
+   - Backend: http://localhost:3001
 
-### Сборка для production
+### Production Build
 
 ```bash
 docker-compose -f docker-compose.prod.yml up --build
 ```
 
-## Технологии
+## Technologies
 
-### Фронтенд
+### Frontend
 
-- React 19 - Библиотека UI
-- TypeScript - Проверка типов
-- Vite - Инструмент сборки
-- @dnd-kit - Функциональность перетаскивания
-- Material UI - UI компоненты
-- react-window - Виртуализированные списки
-- react-infinite-scroll - Бесконечная загрузка
+- React 19 - UI library
+- TypeScript - Type checking
+- Vite - Build tool
+- @dnd-kit - Drag and drop functionality
+- Material UI - UI components
+- react-window - Virtualized lists
+- react-infinite-scroll - Infinite loading
 
-### Бэкенд
+### Backend
 
-- Express - Веб-фреймворк
-- Node.js - Среда выполнения
+- Express - Web framework
+- Node.js - Runtime environment
 
-## API endpoints
+## API Endpoints
 
-| Метод | Эндпоинт | Описание                                    |
-|-------|----------|---------------------------------------------|
-| GET   | /items   | Получить элементы с пагинацией и фильтрацией |
-| POST  | /swap    | Обновить позиции элементов после перетаскивания |
-| POST  | /select  | Изменить состояние выбора элемента           |
+| Method | Endpoint | Description                                      |
+|--------|----------|------------------------------------------------|
+| GET    | /items   | Get items with pagination and filtering         |
+| POST   | /swap    | Update item positions after drag and drop       |
+| POST   | /select  | Change item selection state                       |
 
-## Переменные окружения
+## Environment Variables
 
-### Фронтенд:
+### Frontend:
 
-- `VITE_SERVER_URL` - URL бэкенд сервера (по умолчанию: http://localhost:3001)
+- `VITE_SERVER_URL` - Backend server URL (default: http://localhost:3001)
 
-## Настройка
+## Configuration
 
-Вы можете настроить следующие аспекты:
+You can customize the following:
 
-- Отрисовка элементов списка - Измените компонент `SortableRow`
-- Внешний вид при перетаскивании - Редактируйте компонент `DragOverlayRow`
-- Размер пагинации - Измените `PAGE_SIZE` в компоненте `List`
-- Начальный размер данных - Измените длину `sortedList` на сервере
+- List item rendering — edit the `SortableRow` component
+- Drag overlay appearance — edit the `DragOverlayRow` component
+- Page size — change `PAGE_SIZE` in the `List` component
+- Initial data size — modify the length of `sortedList` on the server
 
-## Производительность
+## Performance
 
-- Виртуализация обеспечивает плавную прокрутку с большими наборами данных
-- Поиск с задержкой предотвращает избыточные запросы к API
-- Оптимизированное перетаскивание с минимальными перерисовками
+- Virtualization ensures smooth scrolling with large datasets
+- Debounced search prevents excessive API requests
+- Optimized drag-and-drop with minimal re-renders
 
-## Лицензия
+## License
 
 MIT License
